@@ -20,6 +20,15 @@
 		<main role="main" class="container">
 	      	<div class="row mt-4">
 	        	<div class="col-md-8">
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-success">
+                            {{message}}
+                        </div>
+                        
+                        {% endfor %}
+                    {% endif %}
+                    
 	          		{% block content %}
 	          		<!-- code here -->
 	          		{% endblock %}
