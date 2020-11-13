@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h1 class="mb-3">Posts by <span class="text-info">{{ view.kwargs.username}}</span> <small class="text-muted">({{ page_obj.paginator.count}} posts)</small></h1>
+
 {% for post in posts %}
 
 <article class="media content-section">
@@ -13,30 +15,8 @@
         </div>
         <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.content }}</p>
-        <hr>
-        {% if not post.comments.all %}
-        	No comments yet <a class="btn btn-sm btn-outline-info" href="">add</a>
-    	{% else %}
-    	<h5>Comments...</h5>
-    		<div class="card card-body">
-    			
-    		{% for comment in post.comments.all %}
-    			<strong>
-    				{{comment.name}}
-    				{{comment.date_added}}
-    			</strong>
-    			<br>
-    			{{comment.body}}
-    			<hr>
-    		{% endfor %}
-    		</div>
-        {% endif %}
-
     </div>
-
 </article>
-
-
 
 {% endfor %}
 
